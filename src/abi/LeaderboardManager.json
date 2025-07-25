@@ -1,0 +1,30 @@
+[
+  {
+    "inputs": [
+      { "internalType": "string", "name": "username", "type": "string" },
+      { "internalType": "uint256", "name": "score", "type": "uint256" }
+    ],
+    "name": "addOrUpdateBuilder",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllBuilders",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "address", "name": "wallet", "type": "address" },
+          { "internalType": "string", "name": "username", "type": "string" },
+          { "internalType": "uint256", "name": "score", "type": "uint256" }
+        ],
+        "internalType": "struct LeaderboardManager.Builder[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
