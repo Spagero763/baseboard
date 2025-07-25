@@ -3,13 +3,13 @@
 import * as React from 'react';
 import { RainbowKitProvider, getDefaultConfig } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
-import { baseSepolia } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { chain } from '@/config';
 
 const config = getDefaultConfig({
   appName: 'BaseBoard',
   projectId: '9b84015f6b8b0821e254784c017f8a18', // Using a public WalletConnect project ID
-  chains: [baseSepolia],
+  chains: [chain],
   ssr: true,
 });
 

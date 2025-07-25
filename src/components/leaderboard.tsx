@@ -22,8 +22,7 @@ import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import { AlertTriangle, Crown } from 'lucide-react';
-
-const CONTRACT_ADDRESS = '0xE8C207DDb9B7B3E04Ef84c1CADBb10FC52506f30';
+import { contractAddress } from '@/config';
 
 type Builder = {
   wallet: `0x${string}`;
@@ -41,7 +40,7 @@ export function Leaderboard() {
   const [sortedBuilders, setSortedBuilders] = useState<Builder[]>([]);
 
   const { data, isError, isLoading, error } = useContractRead({
-    address: CONTRACT_ADDRESS,
+    address: contractAddress,
     abi: abi,
     functionName: 'getAllBuilders',
     watch: true,
