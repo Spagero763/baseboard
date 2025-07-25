@@ -1,6 +1,7 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Leaderboard } from '@/components/leaderboard';
 import { Trophy } from 'lucide-react';
+import { UpdateScore } from '@/components/update-score';
 
 export default function Home() {
   return (
@@ -13,7 +14,10 @@ export default function Home() {
           </h1>
           <ConnectButton />
         </header>
-        <Leaderboard />
+        <div className='space-y-8'>
+          <Leaderboard />
+          <UpdateScore />
+        </div>
       </div>
     </main>
   );
