@@ -40,7 +40,7 @@ const formSchema = z.object({
   }),
   score: z.coerce.number().min(0, {
     message: 'Score must be a positive number.',
-  }),
+  }).int({ message: 'Score must be a whole number.' }),
 });
 
 export function UpdateScore() {
