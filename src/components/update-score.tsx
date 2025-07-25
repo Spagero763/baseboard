@@ -31,6 +31,8 @@ import abi from '@/abi/LeaderboardManager.json';
 import { Loader2, PartyPopper } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
+import { parseError } from '@/lib/utils';
+import { useEffect } from 'react';
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -49,17 +51,7 @@ export function UpdateScore() {
     writeContract,
     isPending,
     error,
-  } = useWriteContract({
-    mutation: {
-      onError: (e) => {
-        toast({
-          variant: 'destructive',
-          title: 'Transaction Error',
-          description: e.message,
-        });
-      }
-    }
-  });
+  } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
@@ -74,12 +66,22 @@ export function UpdateScore() {
     },
   });
 
+  useEffect(() => {
+    if (error) {
+      toast({
+        variant: 'destructive',
+        title: 'Transaction Error',
+        description: parseError(error),
+      });
+    }
+  }, [error, toast]);
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     writeContract({
       address: contractAddress,
       abi,
       functionName: 'addOrUpdateBuilder',
-      args: [values.username, values.score],
+      args: [values.username, BigInt(values.score)],
     });
   }
 
