@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import { Providers } from '@/components/providers';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'BaseBoard',
@@ -24,7 +25,10 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );
