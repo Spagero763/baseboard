@@ -30,6 +30,10 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+  },
+  env: {
+    NEXT_PUBLIC_CHAIN_ID: process.env.NEXT_PUBLIC_CHAIN_ID,
+    NEXT_PUBLIC_CONTRACT_ADDRESS: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
   }
 };
 
